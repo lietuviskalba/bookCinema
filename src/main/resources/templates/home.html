@@ -2,13 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
  <head>
  <title>Home page</title>
+
+     <link rel="stylesheet" type="text/css" th:href="@{/css/css.css}" />
  </head>
  <body>
+<!--
      <h1 style="color: green">Welcome to the rice fiels mofo!</h1>
-  <!--   <a style="color:blue" th:href="@{/welcome}">Welcome page!</a>-->
+  &lt;!&ndash;   <a style="color:blue" th:href="@{/welcome}">Welcome page!</a>&ndash;&gt;
      <br/>
      <a style="color:blue" th:href="@{/admin}">Admin</a>
      <a style="color:blue" th:href="@{/client}">Booking</a>
      <a style="color:blue" th:href="@{/register}">Registration</a>
+
+
+-->
+
+
+
+
+     <div th:align="center">
+         <h2>Welcome to our course booking system</h2>
+         <p>Please choose one </p>
+
+         <ul style="font-size: 300%">
+             <li><a  class="active" href="/">Home</a></li>
+             <li><a href="/admin">Admin</a></li>
+             <li><a href="/client">Booking</a></li>
+             <li><a href="/register">Register</a></li>
+         </ul>
+     </div>
+
  </body>
 </html>
