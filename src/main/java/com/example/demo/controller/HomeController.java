@@ -4,12 +4,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class WebController {
+public class HomeController {
 
     @RequestMapping(value={"/","home"})
     public String home(){
         return "home";
     }
+
+
 
     @RequestMapping(value={"/welcome"})
     public String welcome(){
@@ -24,6 +26,11 @@ public class WebController {
     @RequestMapping(value="/client")
     public String admin2(){
         return "client";
+    }
+
+    @RequestMapping(value="/register")
+    public String register(){
+        return "register";
     }
 
     @RequestMapping(value={"/login"})
