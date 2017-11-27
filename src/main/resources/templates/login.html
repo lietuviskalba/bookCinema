@@ -9,7 +9,7 @@
  
      </div>
      <div th:if="${param.logout}">
-         <h1 style="color:blue">Logged out.</h1>
+         <h1 style="color:green">Logged out.</h1>
      </div>
      <form th:action="@{/login}" method="post">
          <div><label> User Name : <input type="text" name="username"/> </label></div>

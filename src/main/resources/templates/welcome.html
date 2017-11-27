@@ -2,15 +2,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
  <head>
  <title>Cinema xxx</title>
- </head>
- <body>
-     <h1 style="color:blue"> Hello! This is Welcome Page!</h1>
-     
-     <a style="color:blue" th:href="@{/}">Go to Home Page!</a>
-     <br/>
-     
-     <form th:action="@{/logout}" method="post">
-         <input type="submit" value="Sign Out"/>
-     </form>
+
+   <body>
+
+
+ <link rel="stylesheet"
+       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+       integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+       crossorigin="anonymous"/>
+ <!-- Bootstrap FOR  Javascript -->
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+         crossorigin="anonymous"></script>
+ <!-- use Jquerry -->
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+ <link rel="stylesheet" type="text/css" th:href="@{/css/css.css}" />
+
+   <div th:replace="fragments/adminHeader :: header"/>
+
+
+
+
  </body>
 </html>

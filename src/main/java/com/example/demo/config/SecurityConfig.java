@@ -1,4 +1,5 @@
 package com.example.demo.config;
+
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logout().permitAll();
         http.exceptionHandling().accessDeniedPage("/403");
     }
+
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.inMemoryAuthentication()
+                .withUser("client").password("password").roles("CLIENT")
+                .and()
+                .withUser("admin").password("password").roles("ADMIN");
+
+    }
+
+
 
 }
 

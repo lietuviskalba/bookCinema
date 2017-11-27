@@ -23,8 +23,14 @@ public class HomeController {
         return "admin";
     }
 
+    @RequestMapping(value="/admin/booking")
+    public String booking(){
+        return "booking";
+    }
+
+
     @RequestMapping(value="/client")
-    public String admin2(){
+    public String clieny(){
         return "client";
     }
 
