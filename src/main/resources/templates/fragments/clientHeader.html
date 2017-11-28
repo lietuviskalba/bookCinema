@@ -17,10 +17,12 @@
     <div th:fragment="header">
         <div class="topnav">
             <a class="active" href="/">Home</a>
-            <a href="/client/">Bookings</a>
-            <a href="/client/">something</a>
-            <a href="/logout">Logout</a>
-            <!--   <a href="#about">About</a>-->
+            <a href="/client/">Booking</a>
+            <a href="/client/">My bookings</a>
+            <b ><form  th:action="@{/logout}" method="post">
+                <input  type="submit" class="btn btn-success navbar-btn "   value="Sign Out"/>
+            </form></b>
+               <!--<a href="#about">About</a>-->
         </div>
 
     </div>

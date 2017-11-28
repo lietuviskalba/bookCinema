@@ -2,7 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
  <head>
  <title>Cinema xxx</title>
- </head>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+             integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+             crossorigin="anonymous"></script> </head>
  <body>
      <div th:if="${param.error}">
         <h1 style="color:red">Username or Password is wrong. Please check again</h1>
@@ -11,10 +15,43 @@
      <div th:if="${param.logout}">
          <h1 style="color:green">Logged out.</h1>
      </div>
-     <form th:action="@{/login}" method="post">
-         <div><label> User Name : <input type="text" name="username"/> </label></div>
-         <div><label> Password: <input type="password" name="password"/> </label></div>
-         <div><input type="submit" value="Sign In"/>    </div>
-     </form>
+
+
+     <div class="container">
+
+         <div class="row" style="margin-top:20px">
+             <div class="col-xs-12 col-sm-8 col-md-3 col-sm-offset-2 col-md-offset-3">
+                 <form th:action="@{/login}" method="post">
+                     <fieldset>
+                         <h2>Please Login</h2>
+
+
+                         <div class="form-group">
+                             <input type="email" th:placeholder="email" name="username" id="username" class="form-control input-lg"
+                                    placeholder="username" required="true" autofocus="true"/>
+                         </div>
+                         <div class="form-group">
+                             <input type="password" th:placeholder="password" name="password" id="password" class="form-control input-lg"
+                                    placeholder="Password" required="true"/>
+                         </div>
+                           <div class="row">
+                             <div class="col-xs-6 col-sm-6 col-md-6">
+                                 <input  type="submit" class="btn btn-lg btn-success btn-block" value="Sign In" th:align="center"/>
+                             </div>
+
+                             <a href="/">
+                                 <button type="button"  th:align="right" class="btn btn-success btn-lg">  Go back   </button>
+                             </a>
+
+                             <div class="col-xs-6 col-sm-6 col-md-6">
+                             </div>
+                         </div>
+
+                     </fieldset>
+                 </form>
+             </div>
+         </div>
+
+     </div>
  </body>
 </html>

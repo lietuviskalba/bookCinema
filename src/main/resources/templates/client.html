@@ -24,15 +24,21 @@
 
 </head>
 <body>
-<h1 style="color:blue"> Welcome!</h1>
+<div class="container">
 
-<a style="color:blue" th:href="@{/}">Welcome to the rice fields mofo</a>
+    <div class="starter-template">
+        <h1>Clients page</h1>
 
-<br/>
+        <h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
+        <form  th:action="@{/logout}" method="post">
+            <input type="submit" class="btn btn-success"  value="Sign Out"/>
+        </form>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
+    </div>
+
+</div>
+
+
 
 </body>
 </html>

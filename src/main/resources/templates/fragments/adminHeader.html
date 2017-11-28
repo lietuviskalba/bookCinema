@@ -19,7 +19,9 @@
             <a class="active" href="/">Home</a>
             <a href="/administrator/add">Add smth</a>
             <a href="/administrator/list">List smtddf</a>
-            <a href="/logout">Logout</a>
+            <b ><form  th:action="@{/logout}" method="post">
+                <input  type="submit" class="btn btn-success navbar-btn "   value="Sign Out"/>
+            </form></b>
             <!--   <a href="#about">About</a>-->
         </div>
 
