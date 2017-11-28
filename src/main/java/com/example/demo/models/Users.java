@@ -10,11 +10,6 @@ import java.util.Set;
 public class Users {
 
 
-
-
-
-
-
     public String getUsername() {
         return username;
     }
@@ -31,6 +26,22 @@ public class Users {
         this.password = password;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
     public int getEnabled() {
         return enabled;
     }
@@ -42,6 +53,8 @@ public class Users {
     @Id
     private String username;
     private String password;
+    private String firstName;
+    private String lastName;
     private   int enabled;
 
 
