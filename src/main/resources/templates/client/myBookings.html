@@ -25,7 +25,7 @@
 
     <div th:replace="fragments/clientHeader :: header"/>
 
-
+    <input type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" /> <!--hidden input username-->
 
     <script>
         $(document).ready(function() {
@@ -52,34 +52,23 @@
     </thead>
 
     <tbody>
-     <tr>
+<!--
+     <tr th:if="${bookings.empty}">
          <td>1</td>
          <td>IT</td>
          <td>2017/12/28</td>
+         <td>2017/12/28</td>
          <td>Delete</td>
-
      </tr>
-
-
-<!--
-    <tr th:each="booking : ${bookings}">
-        <td th:text="${booking.course.nameEN}"></td>
-        <td th:text="${booking.student.studentFirstName}"></td>
-        <td th:text="${booking.student.studentLastName}"></td>
-        <td th:text="${booking.timestamp}"></td>
-        <td th:text="${booking.status}"></td>
-        <td align="center">
-
-            <button  class="btn" onclick="alert('U just approved this student')"> <a  th:href="@{'/administrator/approve/' + ${booking._id}}">approve</a></button>
-            <button class="btn" onclick="alert('U just disapproved this student')"> <a  th:href="@{'/administrator/disapprove/' + ${booking._id}}">disapprove</a></button>
-        </td>
-        <td><a  th:href="@{'/administrator/delete/' + ${booking._id}}" >Delete</a></td>
-    </tr>
 -->
 
-
-
-
+     <tr  th:if="${booking.users.username} == ${#httpServletRequest.remoteUser}"  th:each="booking : ${bookings}">
+         <td th:text="${booking.id}"></td>
+         <td th:text="${booking.movie}"></td>
+         <td th:text="${booking.startdate}"></td>
+         <td th:text="${booking.finishdate}"></td>
+         <td><a th:href="@{'/client/delete/' + ${booking.id}}" >Delete</a></td>
+     </tr>
 
     </tbody>
 </table>

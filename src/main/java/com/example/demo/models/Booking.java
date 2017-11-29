@@ -7,6 +7,8 @@ public class Booking {
 
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column(name="id", insertable=true, updatable=true, unique=true, nullable=false)
     private int id;
     private String startdate;
 
@@ -53,7 +55,8 @@ public class Booking {
     public void setUsers(Users users) {
         this.users = users;
     }
-    @OneToOne(cascade = CascadeType.ALL)
+  /*@OneToOne(cascade = CascadeType.ALL)*/
+    @OneToOne
     @JoinColumn(name = "username")
     private Users users;
 

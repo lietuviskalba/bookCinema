@@ -6,9 +6,11 @@ import com.example.demo.models.Users;
 import com.example.demo.repositories.BookingRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.User_rolesRepository;
+import com.example.demo.services.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -27,6 +29,12 @@ public class BookingController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    public BookingService bookingService;
+
+    public  void  setBookingService(BookingService bookingService) {
+        this.bookingService = bookingService;
+    }
 
 
     @RequestMapping(value = "/client/book", method = RequestMethod.GET)
@@ -38,7 +46,7 @@ public class BookingController {
 
 
     @RequestMapping(value = "/client/book", method = RequestMethod.POST)
-    @ResponseBody
+    //@ResponseBody
     public String add(HttpServletRequest request, Model model) {
 
         String username = request.getParameter("username");
@@ -57,26 +65,24 @@ public class BookingController {
         booking.setUsers(userRepository.findOne(username));
         bookingRepository.save(booking);
 
-
-
-
-
-        return "New booking" + username;
-        /*return "client/bookingForm";*/
+       /* return "New booking" + username;*/
+        return "client/feedback";
 
     }
 
 
-    @RequestMapping(value = "/client/byBookings", method = RequestMethod.GET)
-    public String alex(Model model) {
+    @RequestMapping(value = "/client/myBookings", method = RequestMethod.GET)
+    public String myBookings(Model model) {
 
-
-        return "client/byBookings";
+        model.addAttribute("bookings", bookingService.listAll());
+        return "client/myBookings";
     }
 
+    @RequestMapping("/client/delete/{id}")
+    public String delete(@PathVariable String id, Model model){
+        bookingService.delete(Integer.parseInt(id));
+        model.addAttribute("bookings", bookingService.listAll());
+        return "/client/myBookings";
+    }
 
 }
-
-//    model.addAttribute("courses", courseService.listAll());
-
-
