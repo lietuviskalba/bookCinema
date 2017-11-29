@@ -13,9 +13,9 @@ CREATE TABLE cinema.user_roles (
   KEY fk_username_idx (username),
   CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES cinema.users (username));*/
 
-INSERT INTO cinema.users(username,password,enabled) VALUES ('mantas','mantas', true);
+INSERT INTO cinema.users(username,password,enabled) VALUES ('mantas@stud.kea.dk','mantas', true);
 INSERT INTO cinema.users(username,password,enabled) VALUES ('thomas','thomas', true);
 
-INSERT INTO cinema.user_roles (username, role) VALUES ('mantas', 'ROLE_USER');
-INSERT INTO cinema.user_roles (username, role) VALUES ('mantas', 'ROLE_ADMIN');
+INSERT INTO cinema.user_roles (username, role) VALUES ('mantas@stud.kea.dk', 'ROLE_USER');
+INSERT INTO cinema.user_roles (username, role) VALUES ('mantas@stud.kea.dk', 'ROLE_ADMIN');
 INSERT INTO cinema.user_roles (username, role) VALUES ('thomas', 'ROLE_USER');
