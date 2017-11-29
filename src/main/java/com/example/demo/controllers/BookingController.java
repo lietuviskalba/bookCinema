@@ -53,9 +53,14 @@ public class BookingController {
         String startdate = request.getParameter("startdate");
         String finishdate = request.getParameter("finishdate");
         String movie = request.getParameter("movie");
+        String status = request.getParameter("status");
 
 
         model.addAttribute("username", username);
+        model.addAttribute("status", status);
+        model.addAttribute("movie", movie);
+        model.addAttribute("startdate", startdate);
+
 
         Booking booking = new Booking();
 

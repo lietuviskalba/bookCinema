@@ -45,6 +45,7 @@
                     <h4>From</h4>
 
                     <input type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" /> <!--hidden input username-->
+                    <input type="hidden" th:value="Success" name="status" /> <!--hidden input username-->
 
                     <div class="form-group">
                         <input type="datetime-local"  name="startdate" id="startdate" class="form-control input-lg"
