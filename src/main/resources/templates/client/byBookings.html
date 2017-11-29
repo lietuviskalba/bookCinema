@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All students</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/headerCSS.css}" />
+
+    <!-- <script src="https://www.w3schools.com/js/myScript.js"></script>-->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+
+    <div th:replace="fragments/clientHeader :: header"/>
+
+
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
+    </script>
+
+</head>
+<body>
+
+<h1 th:align="center">Your bookings</h1>
+
+<table id="example" class="table table-striped" cellspacing="0" width="100%">
+    <thead class="thead-dark">
+    <tr>
+        <th>Booking ID</th>
+        <th>Movie</th>
+        <th>Start date</th>
+        <th>Finish Date</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    <tbody>
+     <tr>
+         <td>1</td>
+         <td>IT</td>
+         <td>2017/12/28</td>
+         <td>Delete</td>
+
+     </tr>
+
+
+<!--
+    <tr th:each="booking : ${bookings}">
+        <td th:text="${booking.course.nameEN}"></td>
+        <td th:text="${booking.student.studentFirstName}"></td>
+        <td th:text="${booking.student.studentLastName}"></td>
+        <td th:text="${booking.timestamp}"></td>
+        <td th:text="${booking.status}"></td>
+        <td align="center">
+
+            <button  class="btn" onclick="alert('U just approved this student')"> <a  th:href="@{'/administrator/approve/' + ${booking._id}}">approve</a></button>
+            <button class="btn" onclick="alert('U just disapproved this student')"> <a  th:href="@{'/administrator/disapprove/' + ${booking._id}}">disapprove</a></button>
+        </td>
+        <td><a  th:href="@{'/administrator/delete/' + ${booking._id}}" >Delete</a></td>
+    </tr>
+-->
+
+
+
+
+
+    </tbody>
+</table>
+
+
+
+
+</body>
+</html>

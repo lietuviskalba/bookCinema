@@ -1,7 +1,9 @@
 package com.example.demo.controllers;
 
+import com.example.demo.models.Booking;
 import com.example.demo.models.User_roles;
 import com.example.demo.models.Users;
+import com.example.demo.repositories.BookingRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.User_rolesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,17 +20,21 @@ import javax.servlet.http.HttpServletRequest;
 public class BookingController {
 
 
+    @Autowired
+    private BookingRepository bookingRepository;
 
 
-    @RequestMapping(value = "/client/book",method = RequestMethod.GET)
-    public  String book(Model model) {
+    @Autowired
+    private UserRepository userRepository;
 
+
+
+    @RequestMapping(value = "/client/book", method = RequestMethod.GET)
+    public String book(Model model) {
 
 
         return "client/bookingForm";
     }
-
-
 
 
     @RequestMapping(value = "/client/book", method = RequestMethod.POST)
@@ -36,22 +42,40 @@ public class BookingController {
     public String add(HttpServletRequest request, Model model) {
 
         String username = request.getParameter("username");
-        String time = request.getParameter("time");
-        String date = request.getParameter("date");
+        String startdate = request.getParameter("startdate");
+        String finishdate = request.getParameter("finishdate");
+        String movie = request.getParameter("movie");
+
 
         model.addAttribute("username", username);
 
+        Booking booking = new Booking();
+
+        booking.setStartdate(startdate);
+        booking.setFinishdate(finishdate);
+        booking.setMovie(movie);
+        booking.setUsers(userRepository.findOne(username));
+        bookingRepository.save(booking);
 
 
-        return "New booking" + username ;
+
+
+
+        return "New booking" + username;
         /*return "client/bookingForm";*/
 
     }
+
+
+    @RequestMapping(value = "/client/byBookings", method = RequestMethod.GET)
+    public String alex(Model model) {
+
+
+        return "client/byBookings";
+    }
+
+
 }
-
-
-
-
 
 //    model.addAttribute("courses", courseService.listAll());
 
