@@ -83,6 +83,16 @@ public class BookingController {
         return "client/myBookings";
     }
 
+
+    @RequestMapping(value = "/client/allBookings", method = RequestMethod.GET)
+    public String allBookings(Model model) {
+
+        model.addAttribute("bookings", bookingService.listAll());
+        return "client/allBookings";
+    }
+
+
+
     @RequestMapping("/client/delete/{id}")
     public String delete(@PathVariable String id, Model model){
         bookingService.delete(Integer.parseInt(id));

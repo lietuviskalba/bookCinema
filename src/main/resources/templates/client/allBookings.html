@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>All students</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous"/>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+            integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/headerCSS.css}" />
+
+    <!-- <script src="https://www.w3schools.com/js/myScript.js"></script>-->
+
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css"/>
+
+    <div th:replace="fragments/clientHeader :: header"/>
+
+    <input type="hidden" th:value="${#httpServletRequest.remoteUser}" name="username" /> <!--hidden input username-->
+
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "order": [[ 3, "desc" ]]
+            } );
+        } );
+    </script>
+
+</head>
+<body>
+
+<h1 th:align="center">All bookings</h1>
+
+<table id="example" class="table table-striped" cellspacing="0" width="100%">
+    <thead class="thead-dark">
+    <tr>
+        <th>Booking ID</th>
+        <th>User</th>
+        <th>Movie</th>
+        <th>Start date</th>
+        <th>Finish Date</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr  th:each="booking : ${bookings}">
+        <td th:text="${booking.id}"></td>
+        <td th:text="${booking.users.username}"></td>
+        <td th:text="${booking.movie}"></td>
+        <td th:text="${booking.startdate}"></td>
+        <td th:text="${booking.finishdate}"></td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+
+
+
+</body>
+</html>
