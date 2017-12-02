@@ -11,14 +11,17 @@ public class HomeController {
         return "home";
     }
 
-
+    @RequestMapping(value={"/cinema","home"})
+    public String home1(){
+        return "home";
+    }
 
     @RequestMapping(value={"/welcome"})
     public String welcome(){
         return "welcome";
     }
 
-    @RequestMapping(value="/admin")
+    @RequestMapping(value={"/admin","cinema/admin"})
     public String admin(){
         return "admin";
     }
