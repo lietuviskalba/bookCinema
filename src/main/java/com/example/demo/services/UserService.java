@@ -9,11 +9,11 @@ public interface UserService {
 
     List<Users> listAll();
 
-    Users getById(Long id);
+    Users getById(String id);
 
     Users saveOrUpdate(Users course);
 
-    void delete(Long id);
+    void delete(String id);
 
 
 }

@@ -7,6 +7,7 @@ import com.example.demo.repositories.BookingRepository;
 import com.example.demo.repositories.UserRepository;
 import com.example.demo.repositories.User_rolesRepository;
 import com.example.demo.services.BookingService;
+import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,6 +24,9 @@ public class BookingController {
 
 
     @Autowired
+    private User_rolesRepository user_rolesRepository;
+
+    @Autowired
     private BookingRepository bookingRepository;
 
 
@@ -35,6 +39,12 @@ public class BookingController {
     public  void  setBookingService(BookingService bookingService) {
         this.bookingService = bookingService;
     }
+
+    @Autowired
+    public UserService userService;
+
+    public void  setUserService(UserService userService) {this.userService = userService; }
+
 
 
     @RequestMapping(value = "/client/book", method = RequestMethod.GET)
@@ -99,5 +109,41 @@ public class BookingController {
         model.addAttribute("bookings", bookingService.listAll());
         return "/client/myBookings";
     }
+
+
+    @RequestMapping(value = "/client/myAccount", method = RequestMethod.POST)
+    public String myAccount(HttpServletRequest request, Model model) {
+        String username = request.getParameter("username");
+
+        model.addAttribute("account", userRepository.findOne(username));
+        return "client/myAccount";
+    }
+
+
+    @RequestMapping("/client/deleteACC/{id}")
+    @ResponseBody
+    public String deleteACC(@PathVariable String id){
+
+
+
+
+       int size = (int) user_rolesRepository.count();
+
+
+        for (int i = 0 ; i < size; i++ ) {
+
+            if (user_rolesRepository.findOne(i).getUsers().getUsername().equalsIgnoreCase(id)) {
+
+                user_rolesRepository.delete(user_rolesRepository.findOne(i));
+            }
+
+        }
+
+           userService.delete(id);
+
+            return "Your account have been deleted Goodbye!!!! " + id ;
+    }
+
+
 
 }
