@@ -50,12 +50,22 @@ public class Users {
         this.enabled = enabled;
     }
 
+    public int getDormRoom() {
+        return dormRoom;
+    }
+
+    public void setDormRoom(int dormRoom) {
+        this.dormRoom = dormRoom;
+    }
+
+
     @Id
     private String username;
     private String password;
     private String firstName;
     private String lastName;
-    private   int enabled;
+    private int dormRoom;
+    private int enabled;
 
 
 

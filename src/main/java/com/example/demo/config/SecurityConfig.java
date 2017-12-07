@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/home").permitAll()
+                .antMatchers("/","/feedback" ,"/home").permitAll()
                // .antMatchers("/", "/cinema").permitAll()
                 .antMatchers("/", "/register").permitAll()
                 .antMatchers("/admin").hasRole("ADMIN")
@@ -45,9 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 
         auth.inMemoryAuthentication()
-                .withUser("client@stud.kea.dk").password("password").roles("CLIENT")
+                .withUser("client").password("password").roles("CLIENT")
                 .and()
-                .withUser("admin@stud.kea.dk").password("password").roles("ADMIN");
+                .withUser("admin").password("password").roles("ADMIN");
 
     }
 

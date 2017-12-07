@@ -27,14 +27,20 @@ public class RegisterController {
 
 
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    @ResponseBody
+   // @ResponseBody
     public  String add(HttpServletRequest request, Model model){
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
+        String dormRoom = request.getParameter("dormRoom");
         model.addAttribute("username",username);
+        model.addAttribute("password",password);
+        model.addAttribute("firstName",firstName);
+        model.addAttribute("lastName",lastName);
+        model.addAttribute("dormRoom",dormRoom);
+
 
 
         Users users = new Users();
@@ -44,6 +50,7 @@ public class RegisterController {
         users.setPassword(password);
         users.setFirstName(firstName);
         users.setLastName(lastName);
+        users.setDormRoom(Integer.parseInt(dormRoom));
 
         userRepository.save(users);
 
@@ -53,8 +60,8 @@ public class RegisterController {
 
         user_rolesRepository.save(user_roles);
 
-
-    return "New user was added" + username + password +firstName +lastName;
+        return "feedback";
+   // return "New user was added" + username + password +firstName +lastName;
 
     }
 
