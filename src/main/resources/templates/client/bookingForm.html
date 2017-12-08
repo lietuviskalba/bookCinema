@@ -60,12 +60,14 @@
                     <h4>Movie</h4>
                     <div class="form-group">
                         <input type="text"  name="movie" id="movie" class="form-control input-lg" required="true" autofocus="true"/>
-                    <!--Public or private  -->
                     </div>
+                    <!--Public or private  -->
                     <h4>Public or private</h4>
                     <div class="form-group">
-                        <input type="radio"name="public" id="public" value="Public" class="form-control input-lg" required="true" autofocus="true"/> Public
-                        <input type="radio"name="private" id="private" class="form-control input-lg" required="true" autofocus="true"/> Private
+                        <form action="">
+                            <input type="radio" name="publicOrPrivate" value="public"  id="public"   class="form-control input-lg" required="false" autofocus="true"/> public
+                            <input type="radio" name="publicOrPrivate" value="private" id="private"  class="form-control input-lg" required="false" autofocus="true"/> private
+                        </form>
                     </div>
                     <!-- Author of the movie -->
                     <h4>Author</h4>
