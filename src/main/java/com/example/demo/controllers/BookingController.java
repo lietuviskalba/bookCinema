@@ -61,7 +61,7 @@ public class BookingController {
 
         String username = request.getParameter("username");
         String startdate = request.getParameter("startdate");
-        String finishdate = request.getParameter("finishdate");
+        String finishdate = request.getParameter("finishdate");//idete visi nahui
         String movie = request.getParameter("movie");
         String status = request.getParameter("status");
 
