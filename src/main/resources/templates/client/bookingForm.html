@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8"/>
     <title>Booking Form</title>
@@ -59,8 +59,13 @@
                     <!--name of the movie -->
                     <h4>Movie</h4>
                     <div class="form-group">
-                        <input type="text"  name="movie" id="movie" class="form-control input-lg"
-                               required="true" autofocus="true"/>
+                        <input type="text"  name="movie" id="movie" class="form-control input-lg" required="true" autofocus="true"/>
+                    <!--Public or private  -->
+                    </div>
+                    <h4>Public or private</h4>
+                    <div class="form-group">
+                        <input type="radio"name="public" id="public" value="Public" class="form-control input-lg" required="true" autofocus="true"/> Public
+                        <input type="radio"name="private" id="private" class="form-control input-lg" required="true" autofocus="true"/> Private
                     </div>
                     <!-- Author of the movie -->
                     <h4>Author</h4>
